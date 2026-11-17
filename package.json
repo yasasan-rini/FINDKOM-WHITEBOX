@@ -1,0 +1,13 @@
+{
+  "name": "findkom-whitebox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Whitebox testing FINDKOM Kelompok 4: UC-03 Laporan Kehilangan dan UC-08 Serah Terima",
+  "scripts": {
+    "test": "node --test --test-reporter=spec tests/uc03-laporan-kehilangan.test.js tests/uc08-serah-terima.test.js",
+    "test:uc03": "node --test --test-reporter=spec tests/uc03-laporan-kehilangan.test.js",
+    "test:uc08": "node --test --test-reporter=spec tests/uc08-serah-terima.test.js",
+    "coverage": "node --test --experimental-test-coverage tests/uc03-laporan-kehilangan.test.js tests/uc08-serah-terima.test.js"
+  },
+  "devDependencies": { "jsdom": "^24.1.0" }
+}
