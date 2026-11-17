@@ -1,115 +1,1273 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>FILKOM FIND</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0a0e17;--g:#0d1220;--p:#10151f;--p2:#151b28;--ln:#232c3d;--tx:#e8ecf4;--dm:#97a2b8;--ft:#5c6780;--tl:#5eead4;--on:#08201c;--am:#f0a860;--vi:#98a4ff;--sk:#67c9f2;--gr:#7fd694;--rd:#f2637a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:light){:root{color-scheme:light;--bg:#f4f6fb;--g:#e6ebf5;--p:#fff;--p2:#f0f3f9;--ln:#d5dbe8;--tx:#141a2a;--dm:#4f5a73;--ft:#7a859c;--tl:#0f766e;--on:#fff;--am:#b45309;--vi:#4f46e5;--sk:#0369a1;--gr:#15803d;--rd:#be123c}}
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg) linear-gradient(var(--g) 1px,transparent 1px),linear-gradient(90deg,var(--g) 1px,transparent 1px);background-size:42px 42px;color:var(--tx);font:14.5px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh}
-h1,h2,h3,h4,.br{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;letter-spacing:-.01em}
-button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
-.mut{color:var(--dm)}.ft{color:var(--ft)}.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--ft)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--ln);background:var(--p2);border-radius:8px;padding:9px 16px;font-weight:600;transition:.15s}
-.btn:hover{border-color:var(--tl)}.btn.pr{background:var(--tl);border-color:var(--tl);color:var(--on)}.btn.sm{padding:6px 12px;font-size:13px}.btn.gh{background:none;border-color:transparent;color:var(--dm)}.btn.rd{color:var(--rd)}.btn:disabled{opacity:.4;cursor:not-allowed}.w{width:100%}
-.ic{width:16px;height:16px;flex:none}
-.card{background:var(--p);border:1px solid var(--ln);border-radius:10px;padding:18px}
-.fl{margin-bottom:14px}.fl label{display:block;font-size:12.5px;color:var(--dm);margin-bottom:6px;font-weight:600}
-input,select,textarea{width:100%;background:var(--p2);border:1px solid var(--ln);border-radius:8px;padding:10px 12px;outline:0}
-input:focus,select:focus,textarea:focus{border-color:var(--tl)}select:disabled{opacity:.5}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-.st{background:var(--p);border:1px solid var(--ln);border-radius:10px;padding:16px 18px}.st b{font:700 26px 'Space Grotesk',sans-serif;display:block}.st.ac{border-color:var(--tl)}.st.ac b{color:var(--tl)}
-.bd{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;font-size:11.5px;font-weight:600;background:color-mix(in srgb,currentColor 13%,transparent);white-space:nowrap}
-.bd:before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
-.ty{font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;color:var(--on);background:var(--rd)}.ty.found{background:var(--gr)}
-.ri{border:1px solid var(--ln);border-left:3px solid var(--ln);border-radius:9px;background:var(--p);padding:14px 16px;margin-bottom:10px}
-.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sp{justify-content:space-between}
-.tl{display:flex;margin-top:10px;overflow-x:auto}.tl i{flex:1;min-width:70px;text-align:center;position:relative;padding-top:14px;font-style:normal;font-size:10px;color:var(--ft)}
-.tl i:before{content:'';position:absolute;top:5px;left:0;right:0;height:2px;background:var(--ln)}.tl i:after{content:'';position:absolute;top:1px;left:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:var(--p2);border:2px solid var(--ln)}
-.tl i.d{color:var(--dm)}.tl i.d:before{background:var(--tl)}.tl i.d:after{background:var(--tl);border-color:var(--tl)}.tl i.c{color:var(--dm)}.tl i.c:after{background:var(--sk);border-color:var(--sk);box-shadow:0 0 0 4px color-mix(in srgb,var(--sk) 20%,transparent)}
-.hero{border:1px solid var(--ln);border-radius:12px;padding:24px;margin-bottom:18px;background:radial-gradient(circle at 90% 0,color-mix(in srgb,var(--tl) 16%,transparent),transparent 55%),var(--p)}.hero h2{font-size:24px;margin-bottom:4px}
-.nt{border:1px solid var(--tl);background:color-mix(in srgb,var(--tl) 8%,transparent);border-radius:10px;padding:14px 16px;display:flex;gap:12px;margin-bottom:12px}.nt .ic{color:var(--tl);margin-top:3px}
-.sg{display:inline-flex;background:var(--p);border:1px solid var(--ln);border-radius:99px;padding:4px;margin-bottom:16px}.sg button{border:0;background:none;padding:8px 18px;border-radius:99px;font-weight:600;color:var(--dm)}.sg button.on{background:var(--tl);color:var(--on)}
-.tw{border:1px solid var(--ln);border-radius:10px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;background:var(--p2);color:var(--ft);font-size:11.5px;text-transform:uppercase;padding:10px 14px}td{padding:11px 14px;border-top:1px solid var(--ln)}
-.em{border:1px dashed var(--ln);border-radius:10px;padding:34px 20px;text-align:center;color:var(--ft)}
-.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}.vs>div{border:1px solid var(--ln);border-radius:9px;padding:14px;background:var(--p2)}.vs h4{font-size:12px;color:var(--ft);margin-bottom:6px}
-.mr{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--ln);border-radius:8px;margin-bottom:8px;background:var(--p)}
-.bar{height:6px;background:var(--p2);border-radius:4px;overflow:hidden;margin:4px 0 11px}.bar i{display:block;height:100%;background:var(--tl)}
-.ub{border:1.5px dashed var(--ln);border-radius:9px;padding:16px;text-align:center;background:var(--p2);position:relative;font-size:12px;color:var(--dm)}.ub.f{border-style:solid;border-color:var(--tl)}.ub img{max-width:100%;max-height:110px;border-radius:6px;display:block;margin:0 auto 8px}.ub input{position:absolute;inset:0;opacity:0;cursor:pointer;padding:0}
-#md{position:fixed;inset:0;background:rgba(6,9,15,.7);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}#md .card{max-width:560px;width:100%;max-height:88vh;overflow:auto}
-#ts{position:fixed;top:18px;right:18px;background:var(--p2);border:1px solid var(--ln);border-left:3px solid var(--tl);padding:12px 16px;border-radius:8px;max-width:320px;display:none;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-#gate{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;max-width:980px;margin:auto;padding:32px 20px}
-#gate h1{font-size:38px;line-height:1.12;margin:20px 0 12px}#gate h1 b{color:var(--tl)}
-.sq{width:28px;height:28px;border-radius:7px;background:var(--tl);position:relative;flex:none}.sq:after{content:'';position:absolute;inset:7px;border:2px solid var(--on);border-radius:3px}
-.rd{width:230px;height:230px;margin:auto;display:block}.sw{transform-origin:115px 115px;animation:sp 4.2s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}.bl{animation:bk 2.6s ease-in-out infinite}@keyframes bk{50%{opacity:.2}}
-#app{display:none;min-height:100vh}#app.on{display:flex}
-#sb{width:240px;flex:none;background:var(--p);border-right:1px solid var(--ln);display:flex;flex-direction:column;padding:20px 14px;position:sticky;top:0;height:100vh;gap:2px}
-.nv{display:flex;align-items:center;gap:11px;padding:9px 10px;border:0;border-radius:8px;background:none;color:var(--dm);font-weight:500;text-align:left;width:100%}.nv:hover{background:var(--p2);color:var(--tx)}.nv.on{background:color-mix(in srgb,var(--tl) 10%,transparent);color:var(--tl)}
-main{flex:1;min-width:0;padding:28px 34px 60px;max-width:1180px}.hb{display:none}
-@media(max-width:900px){#gate{grid-template-columns:1fr;gap:20px}.rd{width:150px;height:150px;order:-1}#sb{position:fixed;left:0;top:0;transform:translateX(-100%);transition:.2s;z-index:150}#sb.open{transform:none}.hb{display:inline-flex}main{padding:20px 16px 50px}.g4{grid-template-columns:1fr 1fr}.g2,.vs{grid-template-columns:1fr}}
-</style></head><body>
-<div id="ts"></div><div id="md"></div>
-<div id="gate"><div><div class="row br" style="font-size:16px"><div class="sq"></div>FILKOM FIND</div><h1>Barang hilang di FILKOM,<br><b>ketemu lebih cepat.</b></h1><p class="mut" style="max-width:440px;margin-bottom:22px">Laporkan kehilangan atau temuan di satu tempat. Sistem mencocokkan otomatis dari gedung, kategori, dan waktu; Security tinggal memverifikasi.</p><div id="lf"></div></div>
-<svg class="rd" viewBox="0 0 230 230" fill="none" stroke="var(--ln)"><circle cx="115" cy="115" r="108"/><circle cx="115" cy="115" r="78"/><circle cx="115" cy="115" r="46"/><path d="M115 7v216M7 115h216"/><g class="sw"><path d="M115 115V7A108 108 0 0 1 191 46Z" fill="var(--tl)" fill-opacity=".22" stroke="none"/></g><circle class="bl" cx="150" cy="80" r="4" fill="var(--tl)" stroke="none"/><circle class="bl" style="animation-delay:.8s" cx="80" cy="140" r="4" fill="var(--am)" stroke="none"/><circle class="bl" style="animation-delay:1.6s" cx="150" cy="150" r="4" fill="var(--vi)" stroke="none"/></svg></div>
-<div id="app"><aside id="sb"><div class="row br" style="padding:0 6px 18px;border-bottom:1px solid var(--ln);margin-bottom:14px"><div class="sq"></div>FILKOM FIND</div><nav id="nav" style="flex:1"></nav><div id="me" style="border-top:1px solid var(--ln);padding-top:12px"></div><button class="nv" data-a="out">↩ Keluar</button></aside>
-<main><div class="row" style="gap:12px;margin-bottom:22px"><button class="btn sm hb" data-a="mn">☰</button><div><h2 id="vt" style="font-size:21px"></h2><div id="vs" class="mut"></div></div></div><div id="vb"></div></main></div>
-<script>
-const $=s=>document.querySelector(s),K='filkomfind:v3',esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),pad=n=>String(n).padStart(4,'0'),now=()=>new Date().toISOString(),uid=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36),TD=now().slice(0,10);
-const fd=d=>new Date(d+'T00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}),fdt=i=>new Date(i).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
-const seed=()=>({loc:['Gedung A','Gedung B','Gedung C','Gedung D','Gedung E','Gedung F','Gedung G (Dekanat)','Perpustakaan FILKOM'],cat:['Dompet','Handphone','Kunci','Tas / Ransel','Laptop / Tablet','Kartu (KTM/ATM)','Aksesoris','Alat Tulis','Lainnya'],rep:[],mt:[],n:{l:0,f:0,m:0}});
-let db;try{db=JSON.parse(localStorage.getItem(K))}catch(e){}db=db||seed();
-const save=()=>{try{localStorage.setItem(K,JSON.stringify(db))}catch(e){}};
-let S={u:null,r:null,v:null,tab:'lost',lr:'civ',q:{ty:'',cat:'',b:'',kw:''},ph:null,ho:null};
-const P={dash:'<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',plus:'<path d="M12 5v14M5 12h14"/>',list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',find:'<circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 20 20"/>',hand:'<path d="M8 12V6a2 2 0 1 1 4 0v5M12 11V4a2 2 0 1 1 4 0v7M16 11.5V6a2 2 0 1 1 4 0v9c0 4-3 7-7 7h-1a6 6 0 0 1-5-2.7L3.5 14a1.8 1.8 0 0 1 2.700-2.400L8 14"/>',tbl:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/>',map:'<path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3ZM9 3v15M15 6v15"/>',ok:'<path d="M20 6 9 17l-5-5"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',cam:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/>',bell:'<path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.700 21a2 2 0 0 1-3.400 0"/>',arr:'<path d="M5 12h14M13 6l6 6-6 6"/>'};
-const I=k=>`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${P[k]}</svg>`;
-const ST={LOST_REPORTED:['Menunggu Kandidat','am'],FOUND_REPORTED:['Menunggu Kandidat','am'],MATCH_CANDIDATE:['Kandidat Cocok','vi'],VERIFIED_MATCH:['Terverifikasi','tl'],NOTIFIED:['Menunggu Diambil','sk'],RETURNED:['Sudah Diserahkan','gr'],CLOSED:['Selesai','ft'],REJECTED:['Ditolak (Tidak Cocok)','rd']},OPEN=['LOST_REPORTED','FOUND_REPORTED'];
-const bd=s=>`<span class="bd" style="color:var(--${ST[s][1]})">${ST[s][0]}</span>`,STP=['LOST_REPORTED','MATCH_CANDIDATE','VERIFIED_MATCH','NOTIFIED','RETURNED'],SL=['Dilaporkan','Kandidat','Terverifikasi','Diberitahu','Diambil'];
-const tline=s=>{let i=STP.indexOf(s=='FOUND_REPORTED'?'LOST_REPORTED':s);if(s=='CLOSED')i=4;if(s=='REJECTED')i=0;return`<div class="tl">${SL.map((t,k)=>`<i class="${k<i?'d':k==i?'c':''}">${t}</i>`).join('')}</div>`};
-const op=(a,ph)=>`<option value="">${ph}</option>`+a.map(x=>`<option>${esc(x)}</option>`).join('');
-const rooms=b=>{const m=b.match(/^Gedung (\w)/);if(!m)return['Lt 1','Lt 2','Lt 3','Lobby / Koridor'];const a=[];for(let f=1;f<=4;f++)for(let r=1;r<=4;r++)a.push(`${m[1]} ${f}.${r}`);return[...a,'Lobby / Koridor','Area luar / parkir']};
-const nm=e=>{const n=e.split('@')[0];return n[0].toUpperCase()+n.slice(1)},R=id=>db.rep.find(r=>r.id==id),M=id=>db.mt.find(m=>m.id==id);
-function toast(m){const t=$('#ts');t.textContent=m;t.style.display='block';clearTimeout(t.h);t.h=setTimeout(()=>t.style.display='none',3400)}
-function img(f,mx,q){return new Promise(ok=>{const r=new FileReader;r.onload=e=>{const i=new Image;i.onload=()=>{let w=i.width,h=i.height,k=Math.min(1,mx/Math.max(w,h));w=Math.round(w*k);h=Math.round(h*k);const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0,w,h);ok(c.toDataURL('image/jpeg',q))};i.src=e.target.result};r.readAsDataURL(f)})}
-function tm(r){let c=0;db.rep.forEach(o=>{if(o.type==r.type||!OPEN.includes(o.st)||o.b!=r.b||o.cat!=r.cat||Math.abs(new Date(r.date)-new Date(o.date))/864e5>4)return;const l=r.type=='lost'?r:o,f=r.type=='lost'?o:r;db.n.m++;db.mt.push({id:uid(),code:'M-'+pad(db.n.m),l:l.id,f:f.id,st:'MATCH_CANDIDATE',at:now()});l.st=f.st='MATCH_CANDIDATE';c++});return c}
-/* LOGIN */
-function gate(){$('#lf').innerHTML=`<div class="card" style="max-width:420px"><div class="sg"><button class="${S.lr=='civ'?'on':''}" data-a="lr" data-v="civ">Civitas Akademika</button><button class="${S.lr=='sec'?'on':''}" data-a="lr" data-v="sec">Security</button></div><form id="lg"><div class="fl"><label>Email ${S.lr=='civ'?'institusi':'akun Security'}</label><input name="e" value="${S.lr=='civ'?'viona@student.ub.ac.id':'security@ub.ac.id'}" required></div><div class="fl"><label>Kata sandi</label><input name="p" type="password" value="demo1234" required></div><div id="er" style="color:var(--rd);font-size:13px;margin-bottom:8px"></div><button class="btn pr w">Masuk</button></form><p class="ft" style="font-size:12px;margin-top:10px">${S.lr=='civ'?'Gunakan email @student.ub.ac.id atau @ub.ac.id.':'Akun khusus Security FILKOM (peran admin).'}</p></div>`}
-const NAV={civ:[['home','dash','Beranda'],['lapor','plus','Buat Laporan'],['status','list','Status & Riwayat'],['cari','find','Cari Barang']],sec:[['dash','dash','Dashboard'],['kand','find','Kandidat Kecocokan'],['serah','hand','Serah Terima'],['all','tbl','Semua Laporan'],['master','map','Master Data']]};
-const T={home:['Beranda','Ringkasan aktivitas Anda'],lapor:['Buat Laporan','Satu form untuk barang hilang maupun barang temuan'],status:['Status & Riwayat','Pantau setiap laporan tanpa bolak-balik ke Security'],cari:['Cari Barang','Ciri khusus barang temuan disamarkan demi keamanan klaim'],dash:['Dashboard Security','Ringkasan operasional FILKOM FIND'],kand:['Kandidat Kecocokan','Verifikasi manual hasil pencocokan otomatis sistem'],serah:['Serah Terima Barang','Dokumentasikan pengembalian dengan 2 foto bukti'],all:['Semua Laporan','Seluruh laporan kehilangan dan penemuan'],master:['Master Data','Kelola daftar gedung dan kategori barang']};
-function go(v){S.v=v;S.ph=null;$('#nav').innerHTML=NAV[S.r].map(([k,i,l])=>`<button class="nv ${k==v?'on':''}" data-a="nav" data-v="${k}">${I(i)}${l}</button>`).join('');$('#vt').textContent=T[v][0];$('#vs').textContent=T[v][1];$('#vb').innerHTML=V[v]();if(v=='cari')res();window.scrollTo(0,0)}
-function enter(){$('#gate').style.display='none';$('#app').classList.add('on');$('#me').innerHTML=`<div style="padding:4px 6px"><b>${esc(nm(S.u))}</b><div class="ft" style="font-size:11px">${S.r=='civ'?'Civitas Akademika':'Security (Admin)'}</div></div>`;go(S.r=='civ'?'home':'dash')}
-const mine=()=>db.rep.filter(r=>r.by==S.u).sort((a,b)=>b.at.localeCompare(a.at));
-const rl=(l,mask)=>l.map(r=>`<div class="ri" style="border-left-color:var(--${ST[r.st][1]})"><div class="row sp"><div class="row"><span class="ty ${r.type}">${r.type=='lost'?'Hilang':'Temuan'}</span><span class="mono">${r.code}</span></div>${bd(r.st)}</div><div style="font-weight:600;margin-top:4px">${r.cat} — ${r.b}</div><div class="mut" style="font-size:12.5px">${r.room} · ${fd(r.date)}, ${r.time}</div><div class="mut" style="margin-top:6px">${mask&&r.type=='found'?'Ciri-ciri disamarkan, dicocokkan oleh Security demi keamanan klaim.':esc(r.desc)}</div>${mask?'':tline(r.st)}</div>`).join('');
-const em=(t,c,v)=>`<div class="em">${t}<br><button class="btn pr sm" style="margin-top:14px" data-a="nav" data-v="${v}">${c}</button></div>`;
-const cnt=(a,f)=>a.filter(f).length;
-const V={
-home(){const m=mine(),nt=m.filter(r=>r.type=='lost'&&r.st=='NOTIFIED');return`<div class="hero"><h2>Halo, ${esc(nm(S.u))}!</h2><p class="mut">Kehilangan atau menemukan barang? Laporkan dari satu tempat.</p><div class="row" style="margin-top:14px"><button class="btn pr" data-a="tab" data-v="lost">Saya kehilangan barang</button><button class="btn" data-a="tab" data-v="found">Saya menemukan barang</button></div></div>${nt.map(r=>`<div class="nt">${I('bell')}<div><b>Kemungkinan barang Anda sudah ditemukan!</b><p class="mut">${esc(r.desc.slice(0,70))} (${r.code}) sudah diverifikasi Security. Datang ke pos Security dengan membawa KTM untuk mengambilnya.</p></div></div>`).join('')}<div class="g4"><div class="st ac"><b>${cnt(m,r=>!['CLOSED','REJECTED'].includes(r.st))}</b>Laporan aktif</div><div class="st"><b>${nt.length}</b>Menunggu diambil</div><div class="st"><b>${cnt(m,r=>r.st=='CLOSED')}</b>Selesai</div><div class="st"><b>${cnt(db.rep,r=>r.type=='found'&&r.st!='CLOSED')}</b>Temuan di sistem</div></div><h4 class="mut" style="margin-bottom:12px">Laporan terbaru</h4>${m.length?rl(m.slice(0,3)):em('Belum ada laporan.','Buat laporan pertama','lapor')}`},
-lapor(){const L=S.tab=='lost';return`<div class="sg"><button class="${L?'on':''}" data-a="tab" data-v="lost">Barang Hilang</button><button class="${L?'':'on'}" data-a="tab" data-v="found">Barang Temuan</button></div><div class="card" style="max-width:640px"><form id="fl"><div class="g2"><div class="fl"><label>Gedung ${L?'kehilangan':'penemuan'}</label><select name="b" id="bs" required>${op(db.loc,'Pilih gedung')}</select></div><div class="fl"><label>Lantai / Ruang</label><select name="room" id="rs" required disabled><option value="">Pilih gedung dulu</option></select></div></div><div class="g2"><div class="fl"><label>Tanggal</label><input type="date" name="date" value="${TD}" max="${TD}" required></div><div class="fl"><label>Perkiraan jam</label><input type="time" name="time" value="10:00" required></div></div><div class="fl"><label>Kategori barang</label><select name="cat" required>${op(db.cat,'Pilih kategori')}</select></div><div class="fl"><label>Deskripsi barang</label><textarea name="desc" rows="3" minlength="5" placeholder="Warna, merek, ciri khas, isi dompet/tas..." required></textarea></div><div class="fl"><label>Foto ${L?'referensi (opsional)':'barang temuan (wajib)'}</label><div class="ub" id="ub">${I('cam')}<div>Klik untuk unggah foto</div><input type="file" accept="image/*" id="ph"></div></div>${L?'':'<p class="ft" style="font-size:12px;margin-bottom:12px">Setelah terkirim, titipkan barang fisik ke pos Security.</p>'}<button class="btn pr w">Kirim Laporan ${L?'Kehilangan':'Penemuan'}</button></form></div>`},
-status(){const m=mine();return m.length?rl(m):em('Belum ada laporan.','Buat laporan','lapor')},
-cari(){const f=(k,l,h)=>`<div class="fl"><label>${l}</label><select data-f="${k}">${h}</select></div>`;return`<div class="card" style="margin-bottom:14px"><div class="g4" style="margin:0">${f('ty','Jenis','<option value="">Semua</option><option value="lost">Hilang</option><option value="found">Ditemukan</option>')}${f('cat','Kategori',op(db.cat,'Semua'))}${f('b','Gedung',op(db.loc,'Semua'))}<div class="fl"><label>Kata kunci</label><input data-f="kw" placeholder="mis. hitam"></div></div></div><div id="res"></div>`},
-dash(){const a=db.rep,top=k=>{const o={};a.forEach(r=>o[r[k]]=(o[r[k]]||0)+1);const e=Object.entries(o).sort((x,y)=>y[1]-x[1]).slice(0,5),mx=Math.max(1,...e.map(x=>x[1]));return e.length?e.map(([n,c])=>`<div class="row sp mut" style="font-size:12.5px"><span>${n}</span><b style="color:var(--tx)">${c}</b></div><div class="bar"><i style="width:${c/mx*100}%"></i></div>`).join(''):'<div class="ft">Belum ada data.</div>'};return`<div class="g4"><div class="st"><b>${cnt(a,r=>OPEN.includes(r.st))}</b>Laporan menunggu kandidat</div><div class="st ac"><b>${cnt(db.mt,m=>m.st=='MATCH_CANDIDATE')}</b>Kandidat perlu diverifikasi</div><div class="st"><b>${cnt(db.mt,m=>m.st=='NOTIFIED')}</b>Menunggu serah terima</div><div class="st"><b>${cnt(db.mt,m=>m.st=='CLOSED')}</b>Laporan selesai</div></div><div class="g2"><div class="card"><h4 style="margin-bottom:14px">Titik rawan kehilangan</h4>${top('b')}</div><div class="card"><h4 style="margin-bottom:14px">Kategori paling sering hilang</h4>${top('cat')}</div></div>`},
-kand(){const c=db.mt.filter(m=>m.st=='MATCH_CANDIDATE');if(!c.length)return'<div class="em">Tidak ada kandidat yang menunggu verifikasi.<br>Kandidat baru muncul otomatis saat laporan kehilangan &amp; penemuan cocok.</div>';const col=(r,t)=>`<div><h4>${t} · ${r.code}</h4><div style="font-weight:600">${r.cat}</div><div class="mut" style="font-size:12.5px;margin-bottom:6px">${r.b}, ${r.room} · ${fd(r.date)} ${r.time}</div>${r.photo?`<img src="${r.photo}" style="width:100%;border-radius:7px;margin-bottom:8px">`:''}<div class="mut">${esc(r.desc)}</div><div class="ft" style="font-size:11.5px;margin-top:8px">Pelapor: ${esc(nm(r.by))} · ${r.by}</div></div>`;return c.map(m=>`<div class="card" style="margin-bottom:14px"><div class="row sp" style="margin-bottom:12px"><span class="mono">${m.code}</span>${bd(m.st)}</div><div class="vs">${col(R(m.l),'KEHILANGAN')}<span class="ft">${I('arr')}</span>${col(R(m.f),'PENEMUAN')}</div><div class="row" style="margin-top:12px"><button class="btn pr sm" data-a="ver" data-v="${m.id}">${I('ok')} Verifikasi Cocok</button><button class="btn gh sm rd" data-a="rej" data-v="${m.id}">${I('x')} Bukan Barang yang Sama</button></div></div>`).join('')},
-serah(){const w=db.mt.filter(m=>m.st=='NOTIFIED');return w.length?w.map(m=>{const l=R(m.l);return`<div class="card" style="margin-bottom:14px"><div class="row sp"><div><span class="mono">${m.code}</span><div style="font-weight:600">${l.cat} — ${l.b}</div></div>${bd(m.st)}</div><div class="mut" style="margin:8px 0 2px">Korban: <b style="color:var(--tx)">${esc(nm(l.by))}</b> (${l.by})</div><div class="ft" style="font-size:12px;margin-bottom:10px">Diverifikasi ${fdt(m.vat)}</div><button class="btn pr sm" data-a="ho" data-v="${m.id}">${I('hand')} Proses Serah Terima</button></div>`}).join(''):'<div class="em">Tidak ada barang yang menunggu diambil saat ini.</div>'},
-all(){const a=[...db.rep].sort((x,y)=>y.at.localeCompare(x.at));return a.length?`<div class="tw"><table><tr><th>Kode</th><th>Jenis</th><th>Kategori</th><th>Lokasi</th><th>Tanggal</th><th>Pelapor</th><th>Status</th></tr>${a.map(r=>`<tr><td class="mono">${r.code}</td><td>${r.type=='lost'?'Kehilangan':'Penemuan'}</td><td>${r.cat}</td><td>${r.b}, ${r.room}</td><td>${fd(r.date)}</td><td>${esc(nm(r.by))}</td><td>${bd(r.st)}</td></tr>`).join('')}</table></div>`:'<div class="em">Belum ada laporan yang masuk.</div>'},
-master(){const p=(t,k,ph)=>`<div class="card"><h4 style="margin-bottom:14px">${t}</h4>${db[k].map((x,i)=>`<div class="mr"><span>${esc(x)}</span><button class="btn gh sm rd" data-a="del" data-k="${k}" data-v="${i}">${I('x')}</button></div>`).join('')}<form class="row" data-add="${k}" style="margin-top:10px;flex-wrap:nowrap"><input name="v" placeholder="${ph}" required><button class="btn sm">${I('plus')} Tambah</button></form></div>`;return`<div class="g2">${p('Gedung','loc','Nama gedung baru')}${p('Kategori Barang','cat','Kategori baru')}</div><p class="ft" style="margin-top:12px;font-size:12px">Pilihan lantai/ruang pada form laporan dibuat otomatis mengikuti gedung yang dipilih.</p>`}};
-function res(){const q=S.q,k=q.kw.toLowerCase(),l=db.rep.filter(r=>(!q.ty||r.type==q.ty)&&(!q.cat||r.cat==q.cat)&&(!q.b||r.b==q.b)&&(!k||r.cat.toLowerCase().includes(k)||(r.type=='lost'&&r.desc.toLowerCase().includes(k))));$('#res').innerHTML=l.length?rl(l,1):'<div class="em">Tidak ada laporan yang cocok dengan filter.</div>'}
-function mod(){const x=S.ho,m=$('#md');if(!x){m.style.display='none';return}const l=R(M(x.id).l),u=(k,t)=>`<div class="ub ${x[k]?'f':''}">${x[k]?`<img src="${x[k]}">Foto terpasang`:I('cam')+'<div>'+t+'</div>'}<input type="file" accept="image/*" data-h="${k}"></div>`;m.style.display='flex';m.innerHTML=`<div class="card"><div class="row sp" style="margin-bottom:12px"><h3>Serah Terima — ${M(x.id).code}</h3><button class="btn gh sm" data-a="hx">✕</button></div><p class="mut" style="margin-bottom:14px">Konfirmasi identitas <b style="color:var(--tx)">${esc(nm(l.by))}</b> (${l.by}) dengan KTM, lalu unggah 2 foto bukti sebelum menutup laporan.</p><div class="g2">${u('a','Foto korban memegang barang')}${u('b','Foto KTM korban')}</div><button class="btn pr w" style="margin-top:16px" data-a="done" ${x.a&&x.b?'':'disabled'}>Selesaikan &amp; Tutup Laporan</button></div>`}
-/* EVENTS */
-document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const a=t.dataset.a,v=t.dataset.v;
-if(a=='lr'){S.lr=v;gate()}else if(a=='nav'){go(v);$('#sb').classList.remove('open')}else if(a=='mn')$('#sb').classList.toggle('open');
-else if(a=='out'){S.u=null;$('#app').classList.remove('on');$('#sb').classList.remove('open');$('#gate').style.display='';gate()}
-else if(a=='tab'){S.tab=v;go('lapor')}
-else if(a=='ver'){const m=M(v);m.st='NOTIFIED';m.vat=now();m.by=nm(S.u);R(m.l).st=R(m.f).st='NOTIFIED';save();toast(m.code+' diverifikasi. Notifikasi terkirim ke korban.');go('kand')}
-else if(a=='rej'){const m=M(v);m.st='REJECTED';R(m.l).st='LOST_REPORTED';R(m.f).st='FOUND_REPORTED';save();toast(m.code+' ditandai bukan barang yang sama. Kedua laporan dibuka kembali.');go('kand')}
-else if(a=='ho'){S.ho={id:v,a:null,b:null};mod()}else if(a=='hx'){S.ho=null;mod()}
-else if(a=='done'){const m=M(S.ho.id);m.st='CLOSED';m.ho={photo_holding_item:true,photo_id_card:true,handled_by:nm(S.u),handed_over_at:now()};R(m.l).st=R(m.f).st='CLOSED';save();S.ho=null;mod();toast(m.code+' selesai. Barang telah diserahkan kembali.');go('serah')}
-else if(a=='del'){db[t.dataset.k].splice(+v,1);save();go('master')}});
-document.addEventListener('submit',e=>{e.preventDefault();const f=e.target,d=new FormData(f);
-if(f.id=='lg'){const em=d.get('e').trim().toLowerCase();if(!/@(student\.)?ub\.ac\.id$/.test(em))return $('#er').textContent='Gunakan email institusi UB (@student.ub.ac.id / @ub.ac.id).';S.u=em;S.r=S.lr;enter()}
-else if(f.id=='fl'){const L=S.tab=='lost';if(!L&&!S.ph)return toast('Foto barang temuan wajib diunggah.');const k=L?'l':'f';db.n[k]++;const r={id:uid(),code:(L?'L-':'F-')+pad(db.n[k]),type:S.tab,by:S.u,b:d.get('b'),room:d.get('room'),date:d.get('date'),time:d.get('time'),cat:d.get('cat'),desc:d.get('desc').trim(),photo:S.ph,st:L?'LOST_REPORTED':'FOUND_REPORTED',at:now()};db.rep.push(r);const n=tm(r);save();toast(n?`Laporan ${r.code} terkirim. Ditemukan ${n} kandidat kecocokan!`:`Laporan ${r.code} terkirim.${L?' Kami mencocokkan otomatis saat ada laporan penemuan baru.':' Jangan lupa titipkan barang ke pos Security.'}`);go('status')}
-else if(f.dataset.add){const v=d.get('v').trim(),a=db[f.dataset.add];if(v&&!a.includes(v)){a.push(v);save();toast('Ditambahkan.');go('master')}}});
-document.addEventListener('change',async e=>{const t=e.target;
-if(t.id=='bs'){$('#rs').disabled=!t.value;$('#rs').innerHTML=op(t.value?rooms(t.value):[],t.value?'Pilih ruang':'Pilih gedung dulu')}
-else if(t.id=='ph'&&t.files[0]){S.ph=await img(t.files[0],760,.62);$('#ub').className='ub f';$('#ub').innerHTML=`<img src="${S.ph}">Foto terpasang, klik untuk ganti<input type="file" accept="image/*" id="ph">`}
-else if(t.dataset.h&&t.files[0]){S.ho[t.dataset.h]=await img(t.files[0],640,.6);mod()}
-else if(t.dataset.f){S.q[t.dataset.f]=t.value;res()}});
-document.addEventListener('input',e=>{if(e.target.dataset.f=='kw'){S.q.kw=e.target.value;res()}});
-gate();
-</script></body></html>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>FILKOM FIND</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e17;
+        --g: #0d1220;
+        --p: #10151f;
+        --p2: #151b28;
+        --ln: #232c3d;
+        --tx: #e8ecf4;
+        --dm: #97a2b8;
+        --ft: #5c6780;
+        --tl: #5eead4;
+        --on: #08201c;
+        --am: #f0a860;
+        --vi: #98a4ff;
+        --sk: #67c9f2;
+        --gr: #7fd694;
+        --rd: #f2637a;
+        color-scheme: dark;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          color-scheme: light;
+          --bg: #f4f6fb;
+          --g: #e6ebf5;
+          --p: #fff;
+          --p2: #f0f3f9;
+          --ln: #d5dbe8;
+          --tx: #141a2a;
+          --dm: #4f5a73;
+          --ft: #7a859c;
+          --tl: #0f766e;
+          --on: #fff;
+          --am: #b45309;
+          --vi: #4f46e5;
+          --sk: #0369a1;
+          --gr: #15803d;
+          --rd: #be123c;
+        }
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background:
+          var(--bg) linear-gradient(var(--g) 1px, transparent 1px),
+          linear-gradient(90deg, var(--g) 1px, transparent 1px);
+        background-size: 42px 42px;
+        color: var(--tx);
+        font:
+          14.5px/1.5 system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        min-height: 100vh;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .br {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .mut {
+        color: var(--dm);
+      }
+      .ft {
+        color: var(--ft);
+      }
+      .mono {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 12px;
+        color: var(--ft);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border: 1px solid var(--ln);
+        background: var(--p2);
+        border-radius: 8px;
+        padding: 9px 16px;
+        font-weight: 600;
+        transition: 0.15s;
+      }
+      .btn:hover {
+        border-color: var(--tl);
+      }
+      .btn.pr {
+        background: var(--tl);
+        border-color: var(--tl);
+        color: var(--on);
+      }
+      .btn.sm {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+      .btn.gh {
+        background: none;
+        border-color: transparent;
+        color: var(--dm);
+      }
+      .btn.rd {
+        color: var(--rd);
+      }
+      .btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .w {
+        width: 100%;
+      }
+      .ic {
+        width: 16px;
+        height: 16px;
+        flex: none;
+      }
+      .card {
+        background: var(--p);
+        border: 1px solid var(--ln);
+        border-radius: 10px;
+        padding: 18px;
+      }
+      .fl {
+        margin-bottom: 14px;
+      }
+      .fl label {
+        display: block;
+        font-size: 12.5px;
+        color: var(--dm);
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        background: var(--p2);
+        border: 1px solid var(--ln);
+        border-radius: 8px;
+        padding: 10px 12px;
+        outline: 0;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--tl);
+      }
+      select:disabled {
+        opacity: 0.5;
+      }
+      .g2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .g4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .st {
+        background: var(--p);
+        border: 1px solid var(--ln);
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+      .st b {
+        font:
+          700 26px "Space Grotesk",
+          sans-serif;
+        display: block;
+      }
+      .st.ac {
+        border-color: var(--tl);
+      }
+      .st.ac b {
+        color: var(--tl);
+      }
+      .bd {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 10px;
+        border-radius: 99px;
+        font-size: 11.5px;
+        font-weight: 600;
+        background: color-mix(in srgb, currentColor 13%, transparent);
+        white-space: nowrap;
+      }
+      .bd:before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+      .ty {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 9px;
+        border-radius: 99px;
+        color: var(--on);
+        background: var(--rd);
+      }
+      .ty.found {
+        background: var(--gr);
+      }
+      .ri {
+        border: 1px solid var(--ln);
+        border-left: 3px solid var(--ln);
+        border-radius: 9px;
+        background: var(--p);
+        padding: 14px 16px;
+        margin-bottom: 10px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .sp {
+        justify-content: space-between;
+      }
+      .tl {
+        display: flex;
+        margin-top: 10px;
+        overflow-x: auto;
+      }
+      .tl i {
+        flex: 1;
+        min-width: 70px;
+        text-align: center;
+        position: relative;
+        padding-top: 14px;
+        font-style: normal;
+        font-size: 10px;
+        color: var(--ft);
+      }
+      .tl i:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--ln);
+      }
+      .tl i:after {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: calc(50% - 5px);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--p2);
+        border: 2px solid var(--ln);
+      }
+      .tl i.d {
+        color: var(--dm);
+      }
+      .tl i.d:before {
+        background: var(--tl);
+      }
+      .tl i.d:after {
+        background: var(--tl);
+        border-color: var(--tl);
+      }
+      .tl i.c {
+        color: var(--dm);
+      }
+      .tl i.c:after {
+        background: var(--sk);
+        border-color: var(--sk);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--sk) 20%, transparent);
+      }
+      .hero {
+        border: 1px solid var(--ln);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 18px;
+        background:
+          radial-gradient(
+            circle at 90% 0,
+            color-mix(in srgb, var(--tl) 16%, transparent),
+            transparent 55%
+          ),
+          var(--p);
+      }
+      .hero h2 {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      .nt {
+        border: 1px solid var(--tl);
+        background: color-mix(in srgb, var(--tl) 8%, transparent);
+        border-radius: 10px;
+        padding: 14px 16px;
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .nt .ic {
+        color: var(--tl);
+        margin-top: 3px;
+      }
+      .sg {
+        display: inline-flex;
+        background: var(--p);
+        border: 1px solid var(--ln);
+        border-radius: 99px;
+        padding: 4px;
+        margin-bottom: 16px;
+      }
+      .sg button {
+        border: 0;
+        background: none;
+        padding: 8px 18px;
+        border-radius: 99px;
+        font-weight: 600;
+        color: var(--dm);
+      }
+      .sg button.on {
+        background: var(--tl);
+        color: var(--on);
+      }
+      .tw {
+        border: 1px solid var(--ln);
+        border-radius: 10px;
+        overflow: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      th {
+        text-align: left;
+        background: var(--p2);
+        color: var(--ft);
+        font-size: 11.5px;
+        text-transform: uppercase;
+        padding: 10px 14px;
+      }
+      td {
+        padding: 11px 14px;
+        border-top: 1px solid var(--ln);
+      }
+      .em {
+        border: 1px dashed var(--ln);
+        border-radius: 10px;
+        padding: 34px 20px;
+        text-align: center;
+        color: var(--ft);
+      }
+      .vs {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 14px;
+        align-items: center;
+      }
+      .vs > div {
+        border: 1px solid var(--ln);
+        border-radius: 9px;
+        padding: 14px;
+        background: var(--p2);
+      }
+      .vs h4 {
+        font-size: 12px;
+        color: var(--ft);
+        margin-bottom: 6px;
+      }
+      .mr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border: 1px solid var(--ln);
+        border-radius: 8px;
+        margin-bottom: 8px;
+        background: var(--p);
+      }
+      .bar {
+        height: 6px;
+        background: var(--p2);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 4px 0 11px;
+      }
+      .bar i {
+        display: block;
+        height: 100%;
+        background: var(--tl);
+      }
+      .ub {
+        border: 1.5px dashed var(--ln);
+        border-radius: 9px;
+        padding: 16px;
+        text-align: center;
+        background: var(--p2);
+        position: relative;
+        font-size: 12px;
+        color: var(--dm);
+      }
+      .ub.f {
+        border-style: solid;
+        border-color: var(--tl);
+      }
+      .ub img {
+        max-width: 100%;
+        max-height: 110px;
+        border-radius: 6px;
+        display: block;
+        margin: 0 auto 8px;
+      }
+      .ub input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        padding: 0;
+      }
+      #md {
+        position: fixed;
+        inset: 0;
+        background: rgba(6, 9, 15, 0.7);
+        backdrop-filter: blur(2px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 200;
+      }
+      #md .card {
+        max-width: 560px;
+        width: 100%;
+        max-height: 88vh;
+        overflow: auto;
+      }
+      #ts {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        background: var(--p2);
+        border: 1px solid var(--ln);
+        border-left: 3px solid var(--tl);
+        padding: 12px 16px;
+        border-radius: 8px;
+        max-width: 320px;
+        display: none;
+        z-index: 300;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      #gate {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        max-width: 980px;
+        margin: auto;
+        padding: 32px 20px;
+      }
+      #gate h1 {
+        font-size: 38px;
+        line-height: 1.12;
+        margin: 20px 0 12px;
+      }
+      #gate h1 b {
+        color: var(--tl);
+      }
+      .sq {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        background: var(--tl);
+        position: relative;
+        flex: none;
+      }
+      .sq:after {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        border: 2px solid var(--on);
+        border-radius: 3px;
+      }
+      .rd {
+        width: 230px;
+        height: 230px;
+        margin: auto;
+        display: block;
+      }
+      .sw {
+        transform-origin: 115px 115px;
+        animation: sp 4.2s linear infinite;
+      }
+      @keyframes sp {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .bl {
+        animation: bk 2.6s ease-in-out infinite;
+      }
+      @keyframes bk {
+        50% {
+          opacity: 0.2;
+        }
+      }
+      #app {
+        display: none;
+        min-height: 100vh;
+      }
+      #app.on {
+        display: flex;
+      }
+      #sb {
+        width: 240px;
+        flex: none;
+        background: var(--p);
+        border-right: 1px solid var(--ln);
+        display: flex;
+        flex-direction: column;
+        padding: 20px 14px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        gap: 2px;
+      }
+      .nv {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 9px 10px;
+        border: 0;
+        border-radius: 8px;
+        background: none;
+        color: var(--dm);
+        font-weight: 500;
+        text-align: left;
+        width: 100%;
+      }
+      .nv:hover {
+        background: var(--p2);
+        color: var(--tx);
+      }
+      .nv.on {
+        background: color-mix(in srgb, var(--tl) 10%, transparent);
+        color: var(--tl);
+      }
+      main {
+        flex: 1;
+        min-width: 0;
+        padding: 28px 34px 60px;
+        max-width: 1180px;
+      }
+      .hb {
+        display: none;
+      }
+      @media (max-width: 900px) {
+        #gate {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .rd {
+          width: 150px;
+          height: 150px;
+          order: -1;
+        }
+        #sb {
+          position: fixed;
+          left: 0;
+          top: 0;
+          transform: translateX(-100%);
+          transition: 0.2s;
+          z-index: 150;
+        }
+        #sb.open {
+          transform: none;
+        }
+        .hb {
+          display: inline-flex;
+        }
+        main {
+          padding: 20px 16px 50px;
+        }
+        .g4 {
+          grid-template-columns: 1fr 1fr;
+        }
+        .g2,
+        .vs {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ts"></div>
+    <div id="md"></div>
+    <div id="gate">
+      <div>
+        <div class="row br" style="font-size: 16px">
+          <div class="sq"></div>
+          FILKOM FIND
+        </div>
+        <h1>Barang hilang di FILKOM,<br /><b>ketemu lebih cepat.</b></h1>
+        <p class="mut" style="max-width: 440px; margin-bottom: 22px">
+          Laporkan kehilangan atau temuan di satu tempat. Sistem mencocokkan otomatis dari gedung,
+          kategori, dan waktu; Security tinggal memverifikasi.
+        </p>
+        <div id="lf"></div>
+      </div>
+      <svg class="rd" viewBox="0 0 230 230" fill="none" stroke="var(--ln)">
+        <circle cx="115" cy="115" r="108" />
+        <circle cx="115" cy="115" r="78" />
+        <circle cx="115" cy="115" r="46" />
+        <path d="M115 7v216M7 115h216" />
+        <g class="sw">
+          <path
+            d="M115 115V7A108 108 0 0 1 191 46Z"
+            fill="var(--tl)"
+            fill-opacity=".22"
+            stroke="none"
+          />
+        </g>
+        <circle class="bl" cx="150" cy="80" r="4" fill="var(--tl)" stroke="none" />
+        <circle
+          class="bl"
+          style="animation-delay: 0.8s"
+          cx="80"
+          cy="140"
+          r="4"
+          fill="var(--am)"
+          stroke="none"
+        />
+        <circle
+          class="bl"
+          style="animation-delay: 1.6s"
+          cx="150"
+          cy="150"
+          r="4"
+          fill="var(--vi)"
+          stroke="none"
+        />
+      </svg>
+    </div>
+    <div id="app">
+      <aside id="sb">
+        <div
+          class="row br"
+          style="padding: 0 6px 18px; border-bottom: 1px solid var(--ln); margin-bottom: 14px"
+        >
+          <div class="sq"></div>
+          FILKOM FIND
+        </div>
+        <nav id="nav" style="flex: 1"></nav>
+        <div id="me" style="border-top: 1px solid var(--ln); padding-top: 12px"></div>
+        <button class="nv" data-a="out">↩ Keluar</button>
+      </aside>
+      <main>
+        <div class="row" style="gap: 12px; margin-bottom: 22px">
+          <button class="btn sm hb" data-a="mn">☰</button>
+          <div>
+            <h2 id="vt" style="font-size: 21px"></h2>
+            <div id="vs" class="mut"></div>
+          </div>
+        </div>
+        <div id="vb"></div>
+      </main>
+    </div>
+    <script>
+      // ===== DATA DAN FUNGSI BANTU =====
+      const $ = (s) => document.querySelector(s),
+        K = "filkomfind:v3",
+        esc = (s) =>
+          String(s).replace(
+            /[&<>"']/g,
+            (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+          ),
+        pad = (n) => String(n).padStart(4, "0"),
+        now = () => new Date().toISOString(),
+        uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36),
+        TD = now().slice(0, 10);
+      const fd = (d) =>
+          new Date(d + "T00:00").toLocaleDateString("id-ID", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          }),
+        fdt = (i) =>
+          new Date(i).toLocaleString("id-ID", {
+            day: "numeric",
+            month: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+      // Data awal: daftar gedung dan kategori (Master Data)
+      const seed = () => ({
+        loc: [
+          "Gedung A",
+          "Gedung B",
+          "Gedung C",
+          "Gedung D",
+          "Gedung E",
+          "Gedung F",
+          "Gedung G (Dekanat)",
+          "Perpustakaan FILKOM",
+        ],
+        cat: [
+          "Dompet",
+          "Handphone",
+          "Kunci",
+          "Tas / Ransel",
+          "Laptop / Tablet",
+          "Kartu (KTM/ATM)",
+          "Aksesoris",
+          "Alat Tulis",
+          "Lainnya",
+        ],
+        rep: [],
+        mt: [],
+        n: { l: 0, f: 0, m: 0 },
+      });
+      // Database tiruan: disimpan di localStorage browser
+      let db;
+      try {
+        db = JSON.parse(localStorage.getItem(K));
+      } catch (e) {}
+      db = db || seed();
+      const save = () => {
+        try {
+          localStorage.setItem(K, JSON.stringify(db));
+        } catch (e) {}
+      };
+      let S = {
+        u: null,
+        r: null,
+        v: null,
+        tab: "lost",
+        lr: "civ",
+        q: { ty: "", cat: "", b: "", kw: "" },
+        ph: null,
+        ho: null,
+      };
+      const P = {
+        dash: '<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',
+        plus: '<path d="M12 5v14M5 12h14"/>',
+        list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+        find: '<circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 20 20"/>',
+        hand: '<path d="M8 12V6a2 2 0 1 1 4 0v5M12 11V4a2 2 0 1 1 4 0v7M16 11.5V6a2 2 0 1 1 4 0v9c0 4-3 7-7 7h-1a6 6 0 0 1-5-2.7L3.5 14a1.8 1.8 0 0 1 2.700-2.400L8 14"/>',
+        tbl: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/>',
+        map: '<path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3ZM9 3v15M15 6v15"/>',
+        ok: '<path d="M20 6 9 17l-5-5"/>',
+        x: '<path d="M18 6 6 18M6 6l12 12"/>',
+        cam: '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/>',
+        bell: '<path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.700 21a2 2 0 0 1-3.400 0"/>',
+        arr: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+      };
+      const I = (k) =>
+        `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${P[k]}</svg>`;
+      const ST = {
+          LOST_REPORTED: ["Menunggu Kandidat", "am"],
+          FOUND_REPORTED: ["Menunggu Kandidat", "am"],
+          MATCH_CANDIDATE: ["Kandidat Cocok", "vi"],
+          VERIFIED_MATCH: ["Terverifikasi", "tl"],
+          NOTIFIED: ["Menunggu Diambil", "sk"],
+          RETURNED: ["Sudah Diserahkan", "gr"],
+          CLOSED: ["Selesai", "ft"],
+          REJECTED: ["Ditolak (Tidak Cocok)", "rd"],
+        },
+        OPEN = ["LOST_REPORTED", "FOUND_REPORTED"];
+      const bd = (s) => `<span class="bd" style="color:var(--${ST[s][1]})">${ST[s][0]}</span>`,
+        STP = ["LOST_REPORTED", "MATCH_CANDIDATE", "VERIFIED_MATCH", "NOTIFIED", "RETURNED"],
+        SL = ["Dilaporkan", "Kandidat", "Terverifikasi", "Diberitahu", "Diambil"];
+      const tline = (s) => {
+        let i = STP.indexOf(s == "FOUND_REPORTED" ? "LOST_REPORTED" : s);
+        if (s == "CLOSED") i = 4;
+        if (s == "REJECTED") i = 0;
+        return `<div class="tl">${SL.map((t, k) => `<i class="${k < i ? "d" : k == i ? "c" : ""}">${t}</i>`).join("")}</div>`;
+      };
+      const op = (a, ph) =>
+        `<option value="">${ph}</option>` + a.map((x) => `<option>${esc(x)}</option>`).join("");
+      const rooms = (b) => {
+        const m = b.match(/^Gedung (\w)/);
+        if (!m) return ["Lt 1", "Lt 2", "Lt 3", "Lobby / Koridor"];
+        const a = [];
+        for (let f = 1; f <= 4; f++) for (let r = 1; r <= 4; r++) a.push(`${m[1]} ${f}.${r}`);
+        return [...a, "Lobby / Koridor", "Area luar / parkir"];
+      };
+      const nm = (e) => {
+          const n = e.split("@")[0];
+          return n[0].toUpperCase() + n.slice(1);
+        },
+        R = (id) => db.rep.find((r) => r.id == id),
+        M = (id) => db.mt.find((m) => m.id == id);
+      function toast(m) {
+        const t = $("#ts");
+        t.textContent = m;
+        t.style.display = "block";
+        clearTimeout(t.h);
+        t.h = setTimeout(() => (t.style.display = "none"), 3400);
+      }
+      function img(f, mx, q) {
+        return new Promise((ok) => {
+          const r = new FileReader();
+          r.onload = (e) => {
+            const i = new Image();
+            i.onload = () => {
+              let w = i.width,
+                h = i.height,
+                k = Math.min(1, mx / Math.max(w, h));
+              w = Math.round(w * k);
+              h = Math.round(h * k);
+              const c = document.createElement("canvas");
+              c.width = w;
+              c.height = h;
+              c.getContext("2d").drawImage(i, 0, 0, w, h);
+              ok(c.toDataURL("image/jpeg", q));
+            };
+            i.src = e.target.result;
+          };
+          r.readAsDataURL(f);
+        });
+      }
+      // Pencocokan otomatis laporan kehilangan dan penemuan (UC-03)
+      function tm(r) {
+        let c = 0;
+        db.rep.forEach((o) => {
+          if (
+            o.type == r.type ||
+            !OPEN.includes(o.st) ||
+            o.b != r.b ||
+            o.cat != r.cat ||
+            Math.abs(new Date(r.date) - new Date(o.date)) / 864e5 > 4
+          )
+            return;
+          const l = r.type == "lost" ? r : o,
+            f = r.type == "lost" ? o : r;
+          db.n.m++;
+          db.mt.push({
+            id: uid(),
+            code: "M-" + pad(db.n.m),
+            l: l.id,
+            f: f.id,
+            st: "MATCH_CANDIDATE",
+            at: now(),
+          });
+          l.st = f.st = "MATCH_CANDIDATE";
+          c++;
+        });
+        return c;
+      }
+      /* LOGIN */
+      // ===== LOGIN =====
+      function gate() {
+        $("#lf").innerHTML =
+          `<div class="card" style="max-width:420px"><div class="sg"><button class="${S.lr == "civ" ? "on" : ""}" data-a="lr" data-v="civ">Civitas Akademika</button>
+            <button class="${S.lr == "sec" ? "on" : ""}" data-a="lr" data-v="sec">Security</button></div>
+            <form id="lg"><div class="fl"><label>Email ${S.lr == "civ" ? "institusi" : "akun Security"}</label>
+            <input name="e" value="${S.lr == "civ" ? "viona@student.ub.ac.id" : "security@ub.ac.id"}" required></div>
+            <div class="fl"><label>Kata sandi</label>
+            <input name="p" type="password" value="demo1234" required></div>
+            <div id="er" style="color:var(--rd);font-size:13px;margin-bottom:8px"></div>
+            <button class="btn pr w">Masuk</button></form>
+            <p class="ft" style="font-size:12px;margin-top:10px">${S.lr == "civ" ? "Gunakan email @student.ub.ac.id atau @ub.ac.id." : "Akun khusus Security FILKOM (peran admin)."}</p></div>`;
+      }
+      const NAV = {
+        civ: [
+          ["home", "dash", "Beranda"],
+          ["lapor", "plus", "Buat Laporan"],
+          ["status", "list", "Status & Riwayat"],
+          ["cari", "find", "Cari Barang"],
+        ],
+        sec: [
+          ["dash", "dash", "Dashboard"],
+          ["kand", "find", "Kandidat Kecocokan"],
+          ["serah", "hand", "Serah Terima"],
+          ["all", "tbl", "Semua Laporan"],
+          ["master", "map", "Master Data"],
+        ],
+      };
+      const T = {
+        home: ["Beranda", "Ringkasan aktivitas Anda"],
+        lapor: ["Buat Laporan", "Satu form untuk barang hilang maupun barang temuan"],
+        status: ["Status & Riwayat", "Pantau setiap laporan tanpa bolak-balik ke Security"],
+        cari: ["Cari Barang", "Ciri khusus barang temuan disamarkan demi keamanan klaim"],
+        dash: ["Dashboard Security", "Ringkasan operasional FILKOM FIND"],
+        kand: ["Kandidat Kecocokan", "Verifikasi manual hasil pencocokan otomatis sistem"],
+        serah: ["Serah Terima Barang", "Dokumentasikan pengembalian dengan 2 foto bukti"],
+        all: ["Semua Laporan", "Seluruh laporan kehilangan dan penemuan"],
+        master: ["Master Data", "Kelola daftar gedung dan kategori barang"],
+      };
+      function go(v) {
+        S.v = v;
+        S.ph = null;
+        $("#nav").innerHTML = NAV[S.r]
+          .map(
+            ([k, i, l]) =>
+              `<button class="nv ${k == v ? "on" : ""}" data-a="nav" data-v="${k}">${I(i)}${l}</button>`,
+          )
+          .join("");
+        $("#vt").textContent = T[v][0];
+        $("#vs").textContent = T[v][1];
+        $("#vb").innerHTML = V[v]();
+        if (v == "cari") res();
+        window.scrollTo(0, 0);
+      }
+      function enter() {
+        $("#gate").style.display = "none";
+        $("#app").classList.add("on");
+        $("#me").innerHTML =
+          `<div style="padding:4px 6px"><b>${esc(nm(S.u))}</b><div class="ft" style="font-size:11px">${S.r == "civ" ? "Civitas Akademika" : "Security (Admin)"}</div></div>`;
+        go(S.r == "civ" ? "home" : "dash");
+      }
+      const mine = () => db.rep.filter((r) => r.by == S.u).sort((a, b) => b.at.localeCompare(a.at));
+      const rl = (l, mask) =>
+        l
+          .map(
+            (r) =>
+              `<div class="ri" style="border-left-color:var(--${ST[r.st][1]})"><div class="row sp"><div class="row"><span class="ty ${r.type}">${r.type == "lost" ? "Hilang" : "Temuan"}</span><span class="mono">${r.code}</span></div>${bd(r.st)}</div>
+                <div style="font-weight:600;margin-top:4px">${r.cat} — ${r.b}</div>
+                <div class="mut" style="font-size:12.5px">${r.room} · ${fd(r.date)}, ${r.time}</div>
+                <div class="mut" style="margin-top:6px">${mask && r.type == "found" ? "Ciri-ciri disamarkan, dicocokkan oleh Security demi keamanan klaim." : esc(r.desc)}</div>${mask ? "" : tline(r.st)}</div>`,
+          )
+          .join("");
+      const em = (t, c, v) =>
+        `<div class="em">${t}<br><button class="btn pr sm" style="margin-top:14px" data-a="nav" data-v="${v}">${c}</button></div>`;
+      const cnt = (a, f) => a.filter(f).length;
+      // ===== TAMPILAN TIAP HALAMAN (home, lapor, status, cari, dash, kand, serah, all, master) =====
+      const V = {
+        home() {
+          const m = mine(),
+            nt = m.filter((r) => r.type == "lost" && r.st == "NOTIFIED");
+          return `<div class="hero"><h2>Halo, ${esc(nm(S.u))}!</h2>
+            <p class="mut">Kehilangan atau menemukan barang? Laporkan dari satu tempat.</p>
+            <div class="row" style="margin-top:14px"><button class="btn pr" data-a="tab" data-v="lost">Saya kehilangan barang</button>
+            <button class="btn" data-a="tab" data-v="found">Saya menemukan barang</button></div></div>${nt.map((r) => `<div class="nt">${I("bell")}<div><b>Kemungkinan barang Anda sudah ditemukan!</b><p class="mut">${esc(r.desc.slice(0, 70))} (${r.code}) sudah diverifikasi Security. Datang ke pos Security dengan membawa KTM untuk mengambilnya.</p></div></div>`).join("")}<div class="g4"><div class="st ac"><b>${cnt(m, (r) => !["CLOSED", "REJECTED"].includes(r.st))}</b>Laporan aktif</div>
+            <div class="st"><b>${nt.length}</b>Menunggu diambil</div>
+            <div class="st"><b>${cnt(m, (r) => r.st == "CLOSED")}</b>Selesai</div>
+            <div class="st"><b>${cnt(db.rep, (r) => r.type == "found" && r.st != "CLOSED")}</b>Temuan di sistem</div></div>
+            <h4 class="mut" style="margin-bottom:12px">Laporan terbaru</h4>${m.length ? rl(m.slice(0, 3)) : em("Belum ada laporan.", "Buat laporan pertama", "lapor")}`;
+        },
+        lapor() {
+          const L = S.tab == "lost";
+          return `<div class="sg"><button class="${L ? "on" : ""}" data-a="tab" data-v="lost">Barang Hilang</button>
+            <button class="${L ? "" : "on"}" data-a="tab" data-v="found">Barang Temuan</button></div>
+            <div class="card" style="max-width:640px"><form id="fl"><div class="g2"><div class="fl"><label>Gedung ${L ? "kehilangan" : "penemuan"}</label>
+            <select name="b" id="bs" required>${op(db.loc, "Pilih gedung")}</select></div>
+            <div class="fl"><label>Lantai / Ruang</label>
+            <select name="room" id="rs" required disabled><option value="">Pilih gedung dulu</option></select></div></div>
+            <div class="g2"><div class="fl"><label>Tanggal</label>
+            <input type="date" name="date" value="${TD}" max="${TD}" required></div>
+            <div class="fl"><label>Perkiraan jam</label>
+            <input type="time" name="time" value="10:00" required></div></div>
+            <div class="fl"><label>Kategori barang</label>
+            <select name="cat" required>${op(db.cat, "Pilih kategori")}</select></div>
+            <div class="fl"><label>Deskripsi barang</label>
+            <textarea name="desc" rows="3" minlength="5" placeholder="Warna, merek, ciri khas, isi dompet/tas..." required></textarea></div>
+            <div class="fl"><label>Foto ${L ? "referensi (opsional)" : "barang temuan (wajib)"}</label>
+            <div class="ub" id="ub">${I("cam")}<div>Klik untuk unggah foto</div>
+            <input type="file" accept="image/*" id="ph"></div></div>${L ? "" : '<p class="ft" style="font-size:12px;margin-bottom:12px">Setelah terkirim, titipkan barang fisik ke pos Security.</p>'}<button class="btn pr w">Kirim Laporan ${L ? "Kehilangan" : "Penemuan"}</button></form></div>`;
+        },
+        status() {
+          const m = mine();
+          return m.length ? rl(m) : em("Belum ada laporan.", "Buat laporan", "lapor");
+        },
+        cari() {
+          const f = (k, l, h) =>
+            `<div class="fl"><label>${l}</label><select data-f="${k}">${h}</select></div>`;
+          return `<div class="card" style="margin-bottom:14px"><div class="g4" style="margin:0">${f("ty", "Jenis", '<option value="">Semua</option><option value="lost">Hilang</option><option value="found">Ditemukan</option>')}${f("cat", "Kategori", op(db.cat, "Semua"))}${f("b", "Gedung", op(db.loc, "Semua"))}<div class="fl"><label>Kata kunci</label>
+            <input data-f="kw" placeholder="mis. hitam"></div></div></div>
+            <div id="res"></div>`;
+        },
+        dash() {
+          const a = db.rep,
+            top = (k) => {
+              const o = {};
+              a.forEach((r) => (o[r[k]] = (o[r[k]] || 0) + 1));
+              const e = Object.entries(o)
+                  .sort((x, y) => y[1] - x[1])
+                  .slice(0, 5),
+                mx = Math.max(1, ...e.map((x) => x[1]));
+              return e.length
+                ? e
+                    .map(
+                      ([n, c]) =>
+                        `<div class="row sp mut" style="font-size:12.5px"><span>${n}</span><b style="color:var(--tx)">${c}</b></div>
+                          <div class="bar"><i style="width:${(c / mx) * 100}%"></i></div>`,
+                    )
+                    .join("")
+                : '<div class="ft">Belum ada data.</div>';
+            };
+          return `<div class="g4"><div class="st"><b>${cnt(a, (r) => OPEN.includes(r.st))}</b>Laporan menunggu kandidat</div>
+            <div class="st ac"><b>${cnt(db.mt, (m) => m.st == "MATCH_CANDIDATE")}</b>Kandidat perlu diverifikasi</div>
+            <div class="st"><b>${cnt(db.mt, (m) => m.st == "NOTIFIED")}</b>Menunggu serah terima</div>
+            <div class="st"><b>${cnt(db.mt, (m) => m.st == "CLOSED")}</b>Laporan selesai</div></div>
+            <div class="g2"><div class="card"><h4 style="margin-bottom:14px">Titik rawan kehilangan</h4>${top("b")}</div>
+            <div class="card"><h4 style="margin-bottom:14px">Kategori paling sering hilang</h4>${top("cat")}</div></div>`;
+        },
+        kand() {
+          const c = db.mt.filter((m) => m.st == "MATCH_CANDIDATE");
+          if (!c.length)
+            return '<div class="em">Tidak ada kandidat yang menunggu verifikasi.<br>Kandidat baru muncul otomatis saat laporan kehilangan &amp; penemuan cocok.</div>';
+          const col = (r, t) =>
+            `<div><h4>${t} · ${r.code}</h4>
+              <div style="font-weight:600">${r.cat}</div>
+              <div class="mut" style="font-size:12.5px;margin-bottom:6px">${r.b}, ${r.room} · ${fd(r.date)} ${r.time}</div>${r.photo ? `<img src="${r.photo}" style="width:100%;border-radius:7px;margin-bottom:8px">` : ""}<div class="mut">${esc(r.desc)}</div>
+              <div class="ft" style="font-size:11.5px;margin-top:8px">Pelapor: ${esc(nm(r.by))} · ${r.by}</div></div>`;
+          return c
+            .map(
+              (m) =>
+                `<div class="card" style="margin-bottom:14px"><div class="row sp" style="margin-bottom:12px"><span class="mono">${m.code}</span>${bd(m.st)}</div>
+                  <div class="vs">${col(R(m.l), "KEHILANGAN")}<span class="ft">${I("arr")}</span>${col(R(m.f), "PENEMUAN")}</div>
+                  <div class="row" style="margin-top:12px"><button class="btn pr sm" data-a="ver" data-v="${m.id}">${I("ok")} Verifikasi Cocok</button>
+                  <button class="btn gh sm rd" data-a="rej" data-v="${m.id}">${I("x")} Bukan Barang yang Sama</button></div></div>`,
+            )
+            .join("");
+        },
+        serah() {
+          const w = db.mt.filter((m) => m.st == "NOTIFIED");
+          return w.length
+            ? w
+                .map((m) => {
+                  const l = R(m.l);
+                  return `<div class="card" style="margin-bottom:14px"><div class="row sp"><div><span class="mono">${m.code}</span><div style="font-weight:600">${l.cat} — ${l.b}</div></div>${bd(m.st)}</div>
+                    <div class="mut" style="margin:8px 0 2px">Korban: <b style="color:var(--tx)">${esc(nm(l.by))}</b> (${l.by})</div>
+                    <div class="ft" style="font-size:12px;margin-bottom:10px">Diverifikasi ${fdt(m.vat)}</div>
+                    <button class="btn pr sm" data-a="ho" data-v="${m.id}">${I("hand")} Proses Serah Terima</button></div>`;
+                })
+                .join("")
+            : '<div class="em">Tidak ada barang yang menunggu diambil saat ini.</div>';
+        },
+        all() {
+          const a = [...db.rep].sort((x, y) => y.at.localeCompare(x.at));
+          return a.length
+            ? `<div class="tw"><table><tr><th>Kode</th>
+              <th>Jenis</th>
+              <th>Kategori</th>
+              <th>Lokasi</th>
+              <th>Tanggal</th>
+              <th>Pelapor</th>
+              <th>Status</th></tr>${a.map((r) => `<tr><td class="mono">${r.code}</td>
+              <td>${r.type == "lost" ? "Kehilangan" : "Penemuan"}</td>
+              <td>${r.cat}</td>
+              <td>${r.b}, ${r.room}</td>
+              <td>${fd(r.date)}</td>
+              <td>${esc(nm(r.by))}</td>
+              <td>${bd(r.st)}</td></tr>`).join("")}</table></div>`
+            : '<div class="em">Belum ada laporan yang masuk.</div>';
+        },
+        master() {
+          const p = (t, k, ph) =>
+            `<div class="card"><h4 style="margin-bottom:14px">${t}</h4>${db[k].map((x, i) => `<div class="mr"><span>${esc(x)}</span><button class="btn gh sm rd" data-a="del" data-k="${k}" data-v="${i}">${I("x")}</button></div>`).join("")}<form class="row" data-add="${k}" style="margin-top:10px;flex-wrap:nowrap"><input name="v" placeholder="${ph}" required><button class="btn sm">${I("plus")} Tambah</button></form></div>`;
+          return `<div class="g2">${p("Gedung", "loc", "Nama gedung baru")}${p("Kategori Barang", "cat", "Kategori baru")}</div>
+            <p class="ft" style="margin-top:12px;font-size:12px">Pilihan lantai/ruang pada form laporan dibuat otomatis mengikuti gedung yang dipilih.</p>`;
+        },
+      };
+      function res() {
+        const q = S.q,
+          k = q.kw.toLowerCase(),
+          l = db.rep.filter(
+            (r) =>
+              (!q.ty || r.type == q.ty) &&
+              (!q.cat || r.cat == q.cat) &&
+              (!q.b || r.b == q.b) &&
+              (!k ||
+                r.cat.toLowerCase().includes(k) ||
+                (r.type == "lost" && r.desc.toLowerCase().includes(k))),
+          );
+        $("#res").innerHTML = l.length
+          ? rl(l, 1)
+          : '<div class="em">Tidak ada laporan yang cocok dengan filter.</div>';
+      }
+      // Modal Serah Terima: tombol "Selesaikan" aktif jika dua foto lengkap (UC-08)
+      function mod() {
+        const x = S.ho,
+          m = $("#md");
+        if (!x) {
+          m.style.display = "none";
+          return;
+        }
+        const l = R(M(x.id).l),
+          u = (k, t) =>
+            `<div class="ub ${x[k] ? "f" : ""}">${x[k] ? `<img src="${x[k]}">Foto terpasang` : I("cam") + "<div>" + t + "</div>"}<input type="file" accept="image/*" data-h="${k}"></div>`;
+        m.style.display = "flex";
+        m.innerHTML = `<div class="card"><div class="row sp" style="margin-bottom:12px"><h3>Serah Terima — ${M(x.id).code}</h3>
+          <button class="btn gh sm" data-a="hx">✕</button></div>
+          <p class="mut" style="margin-bottom:14px">Konfirmasi identitas <b style="color:var(--tx)">${esc(nm(l.by))}</b> (${l.by}) dengan KTM, lalu unggah 2 foto bukti sebelum menutup laporan.</p>
+          <div class="g2">${u("a", "Foto korban memegang barang")}${u("b", "Foto KTM korban")}</div>
+          <button class="btn pr w" style="margin-top:16px" data-a="done" ${x.a && x.b ? "" : "disabled"}>Selesaikan &amp; Tutup Laporan</button></div>`;
+      }
+      /* EVENTS */
+      // ===== EVENT: klik tombol (data-a menentukan aksi) =====
+      document.addEventListener("click", (e) => {
+        const t = e.target.closest("[data-a]");
+        if (!t) return;
+        const a = t.dataset.a,
+          v = t.dataset.v;
+        if (a == "lr") {
+          S.lr = v;
+          gate();
+        } else if (a == "nav") {
+          go(v);
+          $("#sb").classList.remove("open");
+        } else if (a == "mn") $("#sb").classList.toggle("open");
+        else if (a == "out") {
+          S.u = null;
+          $("#app").classList.remove("on");
+          $("#sb").classList.remove("open");
+          $("#gate").style.display = "";
+          gate();
+        } else if (a == "tab") {
+          S.tab = v;
+          go("lapor");
+        } else if (a == "ver") {
+          const m = M(v);
+          m.st = "NOTIFIED";
+          m.vat = now();
+          m.by = nm(S.u);
+          R(m.l).st = R(m.f).st = "NOTIFIED";
+          save();
+          toast(m.code + " diverifikasi. Notifikasi terkirim ke korban.");
+          go("kand");
+        } else if (a == "rej") {
+          const m = M(v);
+          m.st = "REJECTED";
+          R(m.l).st = "LOST_REPORTED";
+          R(m.f).st = "FOUND_REPORTED";
+          save();
+          toast(m.code + " ditandai bukan barang yang sama. Kedua laporan dibuka kembali.");
+          go("kand");
+        } else if (a == "ho") {
+          S.ho = { id: v, a: null, b: null };
+          mod();
+        } else if (a == "hx") {
+          S.ho = null;
+          mod();
+        } else if (a == "done") {
+          const m = M(S.ho.id);
+          m.st = "CLOSED";
+          m.ho = {
+            photo_holding_item: true,
+            photo_id_card: true,
+            handled_by: nm(S.u),
+            handed_over_at: now(),
+          };
+          R(m.l).st = R(m.f).st = "CLOSED";
+          save();
+          S.ho = null;
+          mod();
+          toast(m.code + " selesai. Barang telah diserahkan kembali.");
+          go("serah");
+        } else if (a == "del") {
+          db[t.dataset.k].splice(+v, 1);
+          save();
+          go("master");
+        }
+      });
+      // ===== EVENT: kirim form (login, laporan, master data) =====
+      document.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const f = e.target,
+          d = new FormData(f);
+        if (f.id == "lg") {
+          const em = d.get("e").trim().toLowerCase();
+          if (!/@(student\.)?ub\.ac\.id$/.test(em))
+            return ($("#er").textContent =
+              "Gunakan email institusi UB (@student.ub.ac.id / @ub.ac.id).");
+          S.u = em;
+          S.r = S.lr;
+          enter();
+        } else if (f.id == "fl") {
+          const L = S.tab == "lost";
+          if (!L && !S.ph) return toast("Foto barang temuan wajib diunggah.");
+          const k = L ? "l" : "f";
+          db.n[k]++;
+          const r = {
+            id: uid(),
+            code: (L ? "L-" : "F-") + pad(db.n[k]),
+            type: S.tab,
+            by: S.u,
+            b: d.get("b"),
+            room: d.get("room"),
+            date: d.get("date"),
+            time: d.get("time"),
+            cat: d.get("cat"),
+            desc: d.get("desc").trim(),
+            photo: S.ph,
+            st: L ? "LOST_REPORTED" : "FOUND_REPORTED",
+            at: now(),
+          };
+          db.rep.push(r);
+          const n = tm(r);
+          save();
+          toast(
+            n
+              ? `Laporan ${r.code} terkirim. Ditemukan ${n} kandidat kecocokan!`
+              : `Laporan ${r.code} terkirim.${L ? " Kami mencocokkan otomatis saat ada laporan penemuan baru." : " Jangan lupa titipkan barang ke pos Security."}`,
+          );
+          go("status");
+        } else if (f.dataset.add) {
+          const v = d.get("v").trim(),
+            a = db[f.dataset.add];
+          if (v && !a.includes(v)) {
+            a.push(v);
+            save();
+            toast("Ditambahkan.");
+            go("master");
+          }
+        }
+      });
+      // ===== EVENT: ganti pilihan / unggah foto =====
+      document.addEventListener("change", async (e) => {
+        const t = e.target;
+        if (t.id == "bs") {
+          $("#rs").disabled = !t.value;
+          $("#rs").innerHTML = op(
+            t.value ? rooms(t.value) : [],
+            t.value ? "Pilih ruang" : "Pilih gedung dulu",
+          );
+        } else if (t.id == "ph" && t.files[0]) {
+          S.ph = await img(t.files[0], 760, 0.62);
+          $("#ub").className = "ub f";
+          $("#ub").innerHTML =
+            `<img src="${S.ph}">Foto terpasang, klik untuk ganti<input type="file" accept="image/*" id="ph">`;
+        } else if (t.dataset.h && t.files[0]) {
+          S.ho[t.dataset.h] = await img(t.files[0], 640, 0.6);
+          mod();
+        } else if (t.dataset.f) {
+          S.q[t.dataset.f] = t.value;
+          res();
+        }
+      });
+      document.addEventListener("input", (e) => {
+        if (e.target.dataset.f == "kw") {
+          S.q.kw = e.target.value;
+          res();
+        }
+      });
+      gate();
+    </script>
+  </body>
+</html>
+ 
